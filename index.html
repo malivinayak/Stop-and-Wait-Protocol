@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Race Finish Popup with SVG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div class="info">
+            <h1>Stop & Wait Protocol</h1>
+            <!-- <svg width="80%" height="2">
+                <line x1="30%" y1="0" x2="100%" y2="0" stroke="#aaa" stroke-width="20" />
+            </svg> -->
+            <p>
+            <ol>
+                <li>Sender side
+                    <ul>
+                        <li>Rule 1: Sender sends one data packet at a time.</li>
+                        <li>Rule 2: Sender sends the next packet only when it receives the acknowledgment of the
+                            previous
+                            packet or after Time-out-Timer.</li>
+                    </ul>
+                </li>
+                <li>Receiver side
+                    <ul>
+                        <li>Rule 1: Receive and then consume the data packet.</li>
+                        <li>Rule 2: When the data packet is consumed, receiver sends the acknowledgment to the sender.
+                        </li>
+                    </ul>
+                </li>
+            </ol>
+            </p>
+        </div>
+
+        <svg width="100%" height="2">
+            <line x1="0" y1="0" x2="100%" y2="0" stroke="#ccc" stroke-width="20" />
+        </svg>
+
+        <!-- Transmission Parameters -->
+        <div id="input-container">
+            <div id="data-packets">
+                <label for="num-packets">⚫ Number of Packets :</label>
+                <input readonly type="number" id="num-packets" min="1" max="15" value="0">
+                <button id="add-packets">+</button>
+                <button id="remove-packets">-</button>
+            </div>
+            <svg id="spacing" width="10%" height="0">
+                <line x1="0" y1="0" x2="100%" y2="0" stroke="#ccc" stroke-width="20" />
+            </svg>
+            <div class="speed">
+                <label for="speed">⚫ Propagation Speed:</label>
+                <input readonly type="number" id="tran-speed" min="1" max="10" value="5">
+                <button id="increase-speed">+</button>
+                <button id="decrease-speed">-</button>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button id="start-btn">Send Data</button>
+        </div>
+
+        <div id="output-container">
+            <!-- Data Transmission -->
+            <svg id="trasmission-box" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Computer Icon -->
+                <g id="sender-computer" transform="translate(50, 0)">
+                    <path id="sender-computer-main"
+                        d="M57 5H7a1 1 0 0 0-1 1v28a1 1 0 0 0 1 1h50a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zm-1 28H8V7h48z" />
+                    <path id="sender-computer-details"
+                        d="M57 1H7a5.006 5.006 0 0 0-5 5v36a5.006 5.006 0 0 0 5 5h17v4H14a1 1 0 0 0-.894.553l-5 10A1 1 0 0 0 9 63h46a1 1 0 0 0 .894-1.447l-5-10A1 1 0 0 0 50 51H40v-4h17a5.006 5.006 0 0 0 5-5V6a5.006 5.006 0 0 0-5-5zM4 6a3.003 3.003 0 0 1 3-3h50a3.003 3.003 0 0 1 3 3v31H4zm34 46a6.007 6.007 0 0 0 6 6 1 1 0 0 0 0-2 3.996 3.996 0 0 1-3.858-3h9.24l4 8H10.618l4-8h9.24A3.996 3.996 0 0 1 20 56a1 1 0 0 0 0 2 6.007 6.007 0 0 0 6-6v-5h12zm22-10a3.003 3.003 0 0 1-3 3H7a3.003 3.003 0 0 1-3-3v-3h56z" />
+                    <path id="sender-computer-indicator"
+                        d="M7 43h6a1 1 0 0 0 0-2H7a1 1 0 0 0 0 2zM16 43h2a1 1 0 0 0 0-2h-2a1 1 0 0 0 0 2z" />
+                </g>
+
+                <g id="reciver-computer" transform="translate(850, 0)">
+                    <path id="reciver-computer-main"
+                        d="M57 5H7a1 1 0 0 0-1 1v28a1 1 0 0 0 1 1h50a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1zm-1 28H8V7h48z" />
+                    <path id="reciver-computer-details"
+                        d="M57 1H7a5.006 5.006 0 0 0-5 5v36a5.006 5.006 0 0 0 5 5h17v4H14a1 1 0 0 0-.894.553l-5 10A1 1 0 0 0 9 63h46a1 1 0 0 0 .894-1.447l-5-10A1 1 0 0 0 50 51H40v-4h17a5.006 5.006 0 0 0 5-5V6a5.006 5.006 0 0 0-5-5zM4 6a3.003 3.003 0 0 1 3-3h50a3.003 3.003 0 0 1 3 3v31H4zm34 46a6.007 6.007 0 0 0 6 6 1 1 0 0 0 0-2 3.996 3.996 0 0 1-3.858-3h9.24l4 8H10.618l4-8h9.24A3.996 3.996 0 0 1 20 56a1 1 0 0 0 0 2 6.007 6.007 0 0 0 6-6v-5h12zm22-10a3.003 3.003 0 0 1-3 3H7a3.003 3.003 0 0 1-3-3v-3h56z" />
+                    <path id="reciver-computer-indicator"
+                        d="M7 43h6a1 1 0 0 0 0-2H7a1 1 0 0 0 0 2zM16 43h2a1 1 0 0 0 0-2h-2a1 1 0 0 0 0 2z" />
+                </g>
+
+                <rect id="sender-line" x="180" y="15" width="3" height="100%"></rect>
+                <rect id="reciver-line" x="785" y="15" width="3" height="100%"></rect>
+
+                <!-- Sender Packets -->
+                <!-- 1st Row -->
+                <!-- <rect id="race-box" x="120" y="80" width="50" height="30" fill="blue"/>
+                <rect id="race-box" x="60" y="80" width="50" height="30" fill="blue"/>
+                <rect id="race-box" x="0" y="80" width="50" height="30" fill="blue"/> -->
+                <!-- 2nd Row -->
+                <!-- <rect id="race-box" x="120" y="120" width="50" height="30" fill="blue"/>
+                <rect id="race-box" x="60" y="120" width="50" height="30" fill="blue"/>
+                <rect id="race-box" x="0" y="120" width="50" height="30" fill="blue"/> -->
+
+                <!-- Reciver Packets -->
+                <!-- 1st Row -->
+                <!-- <rect id="race-box" x="800" y="80" width="50" height="30" fill="blue" />
+                <rect id="race-box" x="860" y="80" width="50" height="30" fill="blue" />
+                <rect id="race-box" x="920" y="80" width="50" height="30" fill="blue" />-->
+                <!-- 2nd Row -->
+                <!--<rect id="race-box" x="800" y="120" width="50" height="30" fill="blue" />
+                <rect id="race-box" x="860" y="120" width="50" height="30" fill="blue" />
+                <rect id="race-box" x="920" y="120" width="50" height="30" fill="blue" /> -->
+
+                <!-- Propagation Path -->
+                <rect id="propagation-line" x="180" y="150" width="60%" height="0"></rect>
+            </svg>
+
+
+            <!-- Transmission Prompt -->
+            <div id="ranking">
+                <!-- <h2>Ranking</h2> -->
+                <!-- <ol id="rank-list"></ol> -->
+            </div>
+
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

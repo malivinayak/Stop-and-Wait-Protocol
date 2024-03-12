@@ -1,0 +1,255 @@
+body,
+html {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: repeating-linear-gradient(to bottom, #2196F3, #64B5F6, #90CAF9, #BBDEFB, #90CAF9, #64B5F6);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    margin: 20px auto;
+}
+
+#container h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #2196F3;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+#container p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+#container ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+#container li {
+    margin-bottom: 10px;
+}
+
+#container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+#container ul li {
+    margin-bottom: 5px;
+}
+
+
+/* Input */
+#input-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    padding-bottom: 10px;
+}
+
+#data-packets,
+.speed {
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+#data-packets,
+.speed {
+    display: flex;
+    align-items: center;
+}
+
+label {
+    margin-right: 10px;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-right: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="number"][readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+}
+
+button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+button:hover {
+    background-color: #1976D2;
+}
+
+/* For smaller devices */
+@media (max-width: 600px) {
+
+    /* Ensure input fields are displayed below their labels */
+    #input-container label,
+    #input-container input {
+        display: block;
+    }
+
+    /* Add spacing between buttons */
+    #input-container button {
+        margin-top: 8px;
+    }
+
+}
+
+@media (max-width: 900px) {
+    #spacing {
+        display: none;
+    }
+}
+
+/* Start Button */
+#button-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#start-btn {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+    margin-left: 42%;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 900px) {
+    #start-btn {
+        margin-left: 40%;
+        margin-right: 30%;
+    }
+}
+
+@media (max-width: 600px) {
+    #start-btn {
+        margin-left: 35%;
+    }
+}
+
+@media (max-width: 500px) {
+    #start-btn {
+        margin-left: 27%;
+    }
+}
+
+
+
+/* Transmission */
+#trasmission-box {
+    position: relative;
+    width: 90%;
+    height: auto;
+    background-color: #f0f0f0;
+    padding: 3vh;
+    border: 1px solid #000;
+    box-sizing: border-box;
+}
+
+/* Computer Node */
+#sender-computer #sender-computer-main,
+#sender-computer #sender-computer-details,
+#sender-computer #sender-computer-indicator {
+    fill: #1b1a1e;
+    /* Initial fill color */
+    transition: fill 0.3s, transform 0.3s;
+}
+
+#sender-computer:hover #sender-computer-main,
+#sender-computer:hover #sender-computer-details,
+#sender-computer:hover #sender-computer-indicator,
+#sender-computer:hover {
+    fill: #3d15db;
+    /* Change color on hover */
+}
+
+#reciver-computer #reciver-computer-main,
+#reciver-computer #reciver-computer-details,
+#reciver-computer #reciver-computer-indicator {
+    fill: #1b1a1e;
+    /* Initial fill color */
+    transition: fill 0.3s, transform 0.3s;
+}
+
+#reciver-computer:hover #reciver-computer-main,
+#reciver-computer:hover #reciver-computer-details,
+#reciver-computer:hover #reciver-computer-indicator,
+#reciver-computer:hover {
+    fill: #db7515;
+    /* Change color on hover */
+}
+
+#sender-line {
+    position: absolute;
+    fill: #808080;
+}
+
+#reciver-line {
+    position: absolute;
+    fill: #808080;
+}
+
+/* Packets */
+.packet {
+    fill: #1976D2;
+    transition: transform 1.5s linear;
+}
+
+@keyframes rectTimer {
+    0% {
+        stroke-dashoffset: 200;
+        stroke-dasharray: 200;
+    }
+
+    100% {
+        stroke-dashoffset: 0;
+        stroke-dasharray: 200;
+    }
+}
+
+.tot {
+    /* fill: #4CAF50; */
+    stroke: rgb(139, 17, 17);
+    stroke-width: 8;
+    fill: transparent;
+    stroke-dashoffset: 200;
+    stroke-dasharray: 200;
+    animation: rectTimer 15s linear;
+}
+
+.ack {
+    width: 10px;
+    fill: #4CAF50;
+}
+
+#ranking {
+    margin-top: 20px;
+    text-align: center;
+}
